@@ -1,0 +1,12 @@
+services:
+  web:
+    build: 
+      context: ..  # Voltar um diretório (sair da pasta docker)
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"  # IMPORTANTE: mapear porta
+    environment:
+      - DEBUG=True
+    volumes:
+      - ..:/app  # Volume para desenvolvimento
+    command: python manage.py runserver 0.0.0.0:8000  # Usar runserver em dev

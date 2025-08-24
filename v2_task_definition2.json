@@ -1,0 +1,95 @@
+{
+    "family": "erp-lakeshore-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "1024",
+    "memory": "2048",
+    "executionRoleArn": "arn:aws:iam::460044121130:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "django-app",
+            "image": "460044121130.dkr.ecr.us-east-2.amazonaws.com/erp-lakeshore:latest",
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "protocol": "tcp"
+                }
+            ],
+            "environment": [
+                {
+                    "name": "ENVIRONMENT",
+                    "value": "PRODUCAO"
+                },
+                {
+                    "name": "ALLOWED_HOSTS",
+                    "value": "*"
+                },
+                {
+                    "name": "HOST",
+                    "value": "lakeshoredevelopmentfl.ch88as8s0tio.us-east-2.rds.amazonaws.com"
+                },
+                {
+                    "name": "POSTGRES_USER",
+                    "value": "dev"
+                },
+                {
+                    "name": "POSTGRES_PASSWORD", 
+                    "value": "desenvolvimento159"
+                },
+                {
+                    "name": "POSTGRES_DB",
+                    "value": "construction_system"
+                },
+                {
+                    "name": "PG_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "SCHEMA",
+                    "value": "public"
+                },
+                {
+                    "name": "DEBUG",
+                    "value": "False"
+                },
+                {
+                    "name": "SMTP_HOST",
+                    "value": "smtp.gmail.com"
+                },
+                {
+                    "name": "SMTP_PORT",
+                    "value": "587"
+                },
+                {
+                    "name": "SMTP_USER",
+                    "value": "noreply@lakeshoredevelopmentfl.com"
+                },
+                {
+                    "name": "SMTP_PASSWORD",
+                    "value": "lalkslvdicgvjuqs"
+                },
+                {
+                    "name": "FRONTEND_URL",
+                    "value": "https://erp-lakeshore.vercel.app"
+                },
+                {
+                    "CORS_ALLOWED_ORIGINS" : [
+                            "http://localhost:3000",
+                            "http://127.0.0.1:3000",
+                            "http://177.152.66.181:3000",
+                            "http://api.lakeshoredevelopmentfl.com"
+                        ]
+                }
+                
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/erp-lakeshore",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Django specific
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# pyenv
+.python-version
+
+# Poetry
+poetry.lock
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Docker
+*.pid
+*.seed
+*.bak
+*.tar.gz
+
+# Static and media folders
+/static/
+/media/
+
+# dotenv
+.env
+.env.*
+scripts/
+
+
+task-definition.json
+
+v2_task-definition2.json

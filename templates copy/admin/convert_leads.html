@@ -1,0 +1,30 @@
+<!-- templates/admin/convert_leads.html -->
+{% extends "admin/base_site.html" %}
+
+{% block title %}Convert Leads to Contracts{% endblock %}
+
+{% block content %}
+<h1>Convert Selected Leads to Contracts</h1>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <h2>Selected Leads ({{ leads|length }}):</h2>
+    <ul>
+    {% for lead in leads %}
+        <li><strong>{{ lead.client_full_name }}</strong> - {{ lead.county.name }} - ${{ lead.contract_value|floatformat:2 }}</li>
+        <input type="hidden" name="{{ action_checkbox_name }}" value="{{ lead.pk }}">
+    {% endfor %}
+    </ul>
+    
+    <h2>Conversion Parameters:</h2>
+    {{ form.as_p }}
+    
+    <div style="margin-top: 20px;">
+        <input type="hidden" name="action" value="convert_to_contracts">
+        <input type="submit" name="apply" value="Convert Leads" class="default">
+        <a href="../">Cancel</a>
+    </div>
+</form>
+
+{% endblock %}
